@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html{
+        height: 100%;
+      }
+      body{
+        font-family: 'Comfortaa', cursive;
+        font-size: 300%;
+        text-align: center;
+        position: relative;
+        background: rgba(91, 136, 216, 1.0);
+        background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background-repeat: no-repeat;
+      }
+      input{
+        background-color: whitesmoke;
+        width: 40%;
+        vertical-align: middle;
+        padding: 4px;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: gray;
+      }
+      .display{
+        font-size: 200%;
+        font-family: 'Nova Mono', monospace;
+        color: white;
+
+      }
+      button{
+        color: white;
+        background-color: dodgerblue;
+        border-radius: 10px;
+        border-style: none;
+        font-size: 85%;
+        padding: 5px;
+
+      }
+      #add{
+        font-size: 120%;
+        margin-top: 5%;
+      }
+      button:hover{
+        background-color: royalblue;
+      }
+      a:link{
+        margin-left: 70%;
+        text-decoration: none;
+        padding: 7px;
+        font-size: 40%;
+        background-color: dodgerblue;
+        border-radius: 10px;
+        color: white;
+        width: 50%;
+      }
+      a:hover{
+        background-color: gainsboro;
+      }
+      .container{
+        /*content-align: center;*/
+        font-size: 70%;
+        background-color: rgba(255, 255, 255, 0.4);
+        width: 40%;
+        border-radius: 20px;
+        padding: 10px;
+      }
+      #mainBod{
+        margin-left:25%;
+        margin-right:25%;
+        font-size: 50%;
+        background-color: whitesmoke;
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 1px;
+        padding: 3%;
+        border-color: gray;
+        box-shadow: 10px 10px 20px slategray;
+      }
+      .logo{
+        margin-top: 2px;
+        position: fixed;
+        /*content-align: center;*/
+        width: 40px;
+      }
+      
+
+    </style>
+    <base target="_top">
+  </head>
+  <body>
+    <p></p>
+    <img class="logo" src="https://s3-alpha-sig.figma.com/img/c09f/c85a/16fc9205d11991c96f3b9db94945fe1a?Expires=1586736000&Signature=AeD7ZBpOVIT004BP9ghGtlkCGYWOyuC8riQJSZ0zSDRvY0txuEW6meZWNwf5Xrt7AWF9tdwF6sucQh7reuSBzWSf0sCjb84FwrrTJrXBXWqkh0r6yEO0gUfp5xaOvh-AwzDiVGXgxkKTujmpVaDvbIFJDgZ8ITjhxaekb59tzssFuh~Gc4Dy-sacxmcJLBmpEpM9mHXPkFhU8wzC-OvXTsac7QbMuf7KrCzYXImyzjdKAsIVKExkSRku8gF~MrI9U~iaDbzilC1ygEzl42y7~OrQ17TOdS2x8Y7fZT4004eL0Gsy9oJxuOt4znoCssZ0GHemHzXQGekBDbeqVmhs3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+    <a href = "profile.html" id = "profile">View Profile</a>
+          <div class="container">
+          <div class = "display "id="display">
+              00:00:00
+          </div>
+          
+          <div class="buttons">
+              <button id = "startStop" onclick ="startStop()">Start</button> 
+              <button id = "reset" onclick = "reset()">Reset</button>
+              <button id = "save" onClick = "save()">Save</button>
+          </div>
+
+      </div>
+    <p></p>
+    <div id="mainBod" >
+      <label>Date: </label><br><input type = "date" id = "date">
+      <p></p>
+      <label>Start Time: </label><br><input type = "time" id = "time">
+      <p></p>
+      <label>Hours Worked: </label><br><input type ="number" id = "hours">
+      <p></p>
+      <label>Description: </label><br><input type = "text" id = "desc"><br>
+      <input type="hidden" id="manual" name="manual" value="yes">
+      <button class = "buttons" id = "add">Add To Sheet</button>
+      <button id = "record">Record ur log</button>
+
+    </div>
+    <p></p>
+
+    
+    
+    
+    <script>
+      var username_sec = sessionStorage.getItem("usernamea");
+      if(username_sec==null){
+        alert("Not an authorized user. Please login with an authorized account ");
+        window.location = "loginView.html";
+      }
+      else{
+      document.getElementById("add").addEventListener("click",addToSheet);
+      
+      
+
+
+  
+
+      function addToSheet(){
+        var uname = sessionStorage.getItem("usernamea");
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        var hours = document.getElementById("hours").value;
+        var desc = document.getElementById("desc").value;
+        var man = String(document.getElementById("manual").value);
+        const Http = new XMLHttpRequest();
+        const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
+        var data = "?username="+uname+"&date="+date+"&time="+time+"&hours="+hours+"&description="+desc+"&manual="+man+"&action=add";
+        Http.open("GET", String(url+data));
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+
+        if (Http.readyState == 4)
+        {
+        document.getElementById("date").value = "";
+        document.getElementById("time").value = "";
+        document.getElementById("hours").value = "";
+        document.getElementById("desc").value = "";   
+        document.getElementById("manual").value = "yes";        
+        }
+
+      
+      }
+      }
+      
+      
+      
+      
+      //vars for time values
+      let seconds = 0;
+      let minutes = 0;
+      let hours = 0;
+      
+      //vars for numbers shown on screen
+      let displaySeconds = 0;
+      let displayMinutes = 0;
+      let displayHours = 0;
+      
+      //var to hold setinterval function
+      let interval = null;
+      
+      //var to hold stopwatch status
+      let status = "stopped";  
+      
+      //stop watch function to increment the stopwatch on screen
+      function stopWatch(){
+      
+          seconds++;
+          
+          //logic to determine when to increase other values (hours minutes)
+          if(seconds/60 ==1){
+              seconds = 0;
+              minutes++;
+              if(minutes/60==1){
+                  minutes = 0;
+                  hours++;
+              }
+          }
+          
+          //logic for leading zeros
+          if(seconds<10){
+              displaySeconds = "0" + seconds.toString();
+          }
+          else{
+              displaySeconds = seconds;
+          }
+          if(minutes<10){
+              displayMinutes = "0" + minutes.toString();
+          }
+          else{
+              displayMinutes = minutes;
+          }
+          if(hours<10){
+              displayHours = "0" + hours.toString();
+          }
+          else{
+              displayHours = hours;
+          }
+          //displaying the timer values on screen
+          document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+      }
+      
+      
+      
+      function startStop(){
+          if(status === "stopped"){
+              var x = new Date();
+              var timh = x.getHours();
+              var timm = x.getMinutes();
+              if(timh<10){
+                timh = "0"+timh;
+              }
+              if(timm<10){
+                timm = "0"+timm;
+              }
+              var tim = timh+":"+ timm;
+              document.getElementById("time").value = tim;
+              interval = window.setInterval(stopWatch, 0.000000000000001);
+              document.getElementById("startStop").innerHTML= "Stop";
+              status = "started";
+          }
+          else{
+              window.clearInterval(interval);
+              document.getElementById("startStop").innerHTML= "Start";
+              status = "stopped";
+          }
+      }
+      
+      //reset function
+      function reset(){
+      
+          window.clearInterval(interval);
+          seconds = 0;
+          minutes = 0;
+          hours = 0;
+          status = "stopped";
+          document.getElementById("display").innerHTML = "00:00:00";
+          document.getElementById("startStop").innerHTML= "Start";
+      
+      }
+      
+      function save(){
+        let time = hours +  (minutes/60) + (seconds/3600);
+        document.getElementById("hours").value = time.toFixed(2);
+        var myDate, day, month, year, date;
+        myDate = new Date();
+        day = myDate.getDate();
+        if (day <10){
+          day = "0" + day;
+          }
+        month = myDate.getMonth() + 1;
+        if (month < 10){
+          month = "0" + month;
+          }
+        year = myDate.getFullYear();
+        date = year + "-" + month + "-" + day;
+        document.getElementById("date").value = date;
+        document.getElementById("manual").value = "no";
+        reset();
+        
+      }
+
+      var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+        var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+
+        var grammar = '#JSGF V1.0;'
+
+        var recognition = new SpeechRecognition();
+        var speechRecognitionList = new SpeechGrammarList();
+        speechRecognitionList.addFromString(grammar, 1);
+        recognition.grammars = speechRecognitionList;
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+
+        recognition.onresult = function(event) { 
+            var dateHash = {
+                January : '01',
+                February: '02',
+                March: '03',
+                April: '04',
+                May: '05',
+                June: '06',
+                July: '07',
+                August: '08',
+                September: '09',
+                October: '10',
+                November: '11',
+                December: '12'
+            };
+            var last = event.results.length - 1;
+            var command = event.results[0][0].transcript;
+            var text = command.split(",");
+            var date = text[0].split(" ");
+            var hours = text[2];
+            var desc = text[3];
+            var day = date[1];
+            var time = text[1].substring(1,text[1].length);
+            if(day.length==3){
+                day = "0"+day.charAt(0);
+            }
+            else{
+                day = day.substring(0,2);
+            }
+
+            if(time.length==4 && time.indexOf(":")!=-1){
+                time = "0"+time;
+            }
+            else if(time.length==4 && time.indexOf(":")==-1){
+                time = time.substring(0,2)+":"+time.substring(2,4);
+            }
+            else if(time.length==3){
+                time = "0"+time.substring(0,2)+":"+time.substring(2,4);
+            }
+
+            var realDate = date[2]+"-"+dateHash[date[0]]+"-"+day;
+            
+            document.getElementById("date").value = realDate;
+            document.getElementById("time").value = time;
+            document.getElementById("hours").value = parseInt(hours);
+            document.getElementById("desc").value = desc;
+
+   
+        };
+
+        recognition.onspeechend = function() {
+            recognition.stop();
+        };
+
+        recognition.onerror = function(event) {
+            message.textContent = 'Error occurred in recognition: ' + event.error;
+        }        
+
+        function record(){
+            alert("Disclaimer for voice logging: \n1.date must be said as month day year ex. April 7th 2020\n2. Time must be said in 24 hour time format\n3. commas must seperate all elements (date,time,hours,description)");
+            recognition.start();
+        }
+
+        document.getElementById('record').addEventListener('click', function(){
+            record();
+
+        });
+   
+      }
+    </script>
+    
+  </body>
+</html>

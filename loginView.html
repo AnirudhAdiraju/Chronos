@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+
+  </head>
+  <body>
+    <h1>Log In</h1>
+    <label>Username: </label><input type ="text" id = "username">
+    <label>Password: </label><input type ="password" id = "password">
+    <button id = "login">Log-In!</button>
+
+
+    <script>
+      
+      document.getElementById("login").addEventListener("click",logIn);
+      var ok = false;
+      var usernamea = "";
+      sessionStorage.setItem("usernamea", usernamea);
+      function callback(val) {
+        if(val){
+         alert("Success!");
+         document.getElementById("cont").disabled = false;
+
+          
+
+        } else {
+          alert("failed login");
+          
+        }
+      }
+      
+
+
+
+      function logIn(){
+        var uname = document.getElementById("username").value;
+        var pword = document.getElementById("password").value;
+        const Http = new XMLHttpRequest();
+        const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
+        var data = "?username="+uname+"&password="+pword+"";
+        Http.open("GET", String(url+data));
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            ok = Http.responseText;
+            console.log(String(ok));
+            console.log(Http.readyState);
+        if (Http.readyState == 4)
+        {
+          if(String(ok) == "true"){
+              console.log("truo");
+              alert("Success!");
+               sessionStorage.setItem("usernamea",uname);
+               window.location = "index.html";
+            }
+            else{
+              console.log("falso");
+              alert("failed login");
+            }
+        }
+        }
+        
+
+      }
+
+
+
+
+    </script>
+  </body>
+</html>
