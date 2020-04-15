@@ -140,8 +140,12 @@
       }
       else{
       document.getElementById("add").addEventListener("click",addToSheet);
-      
-      
+      if(username_sec==''){
+            alert('Not an authorized user. Please login')
+            window.location = "index.html";
+      }
+      else{
+
 
 
   
@@ -153,6 +157,18 @@
         var hours = document.getElementById("hours").value;
         var desc = document.getElementById("desc").value;
         var man = String(document.getElementById("manual").value);
+
+
+        if(uname==''){
+            alert('Not an authorized user, Please log in');
+            window.location = 'index.html';
+          }
+        else{
+        if(date=='' || time == '' || hours == '' || desc == ''){
+          alert("Please fill all fields");
+        }
+        else{
+
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
         var data = "?username="+uname+"&date="+date+"&time="+time+"&hours="+hours+"&description="+desc+"&manual="+man+"&action=add";
@@ -171,6 +187,8 @@
         }
 
       
+      }
+        }
       }
       }
       
@@ -371,6 +389,7 @@
 
         });
    
+      }
       }
     </script>
     
