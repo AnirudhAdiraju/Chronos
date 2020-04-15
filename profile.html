@@ -207,11 +207,16 @@
             var uname = sessionStorage.getItem("usernamea");
           if(uname==null){
                 alert("Not an authorized user. Please login with an authorized account ");
-                window.location = "loginView.html";
+                window.location = "index.html";
 
             }
         else{
           const Http = new XMLHttpRequest();
+          if(uname==''){
+            alert('Not an authorized user. Please login')
+            window.location = "index.html";
+          }
+          else{
           const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
           var data = "?username="+uname+"&action=profile";
           Http.open("GET", String(url+data));
@@ -233,7 +238,8 @@
                   document.getElementById("income").innerHTML = "Total Income: $" + (oka[oka.length-3]*oka[oka.length-1]).toFixed(2);
 
               }   
-          }   
+          }
+        }   
           // Get the modal
     var modal = document.getElementById("myModal");
     // Get the button that opens the modal
