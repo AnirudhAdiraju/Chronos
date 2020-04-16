@@ -133,7 +133,6 @@
     
     
     <script>
-      var username_sec = sessionStorage.getItem("usernamea");
       if(username_sec==null){
         alert("Not an authorized user. Please login with an authorized account ");
         window.location = "index.html";
@@ -145,6 +144,8 @@
             window.location = "index.html";
       }
       else{
+       
+        var username_sec = sessionStorage.getItem("usernamea");
 
 
 
