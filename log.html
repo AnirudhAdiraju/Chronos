@@ -133,19 +133,18 @@
     
     
     <script>
+      var username_sec = sessionStorage.getItem("usernamea");
       if(username_sec==null){
-        alert("Not an authorized user. Please login with an authorized account ");
+        alert(username_sec+"Not an authorized user. Please login with an authorized account ");
         window.location = "index.html";
       }
       else{
-      document.getElementById("add").addEventListener("click",addToSheet);
-      if(username_sec==''){
+        if(username_sec==''){
             alert('Not an authorized user. Please login')
             window.location = "index.html";
       }
       else{
        
-        var username_sec = sessionStorage.getItem("usernamea");
 
 
 
