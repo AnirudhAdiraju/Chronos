@@ -7,30 +7,26 @@
   <style>
     html{
       height: 100%;
+      width: 100%;
     }
-    
     body{
       font-family: 'Comfortaa', cursive;
       font-size: 200%;
+      background-repeat: round;
       background: rgba(91, 136, 216, 1.0);
       background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
       background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
       background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
-    }
-    .logo{
-      margin-top: 10px;
-      margin-left: 15%;
-      position: fixed;
-      content-align: center;
-      width: 40px;
+      background-attachment: fixed;
     }
     .mainBod{
       text-wrap: wrap;
-      margin-top: 30px;
-      font-size: 80%;
+      margin-bottom: 30px;
+      font-size: 3.25vmin;
       border-radius: 20px;
-      margin-left: 15%;
-      margin-right: 15%;
+      margin-top: 7vh;
+      margin-left: 15vw;
+      margin-right: 15vw;
       background-color: whitesmoke;
       position: relative;
       text-align: center;
@@ -43,7 +39,9 @@
       grid-template-columns: auto auto auto;
     }
     a:link{
-      margin-left: 80%;
+      margin-top: 30px;
+      position: absolute;
+      right: 10%;
       text-decoration: none;
       padding: .35%;
       font-size: 75%;
@@ -58,27 +56,32 @@
       padding: 5px;
       background-color: rgba(220,220,220 ,0.75);
       border-radius: 10px;
-      margin-left: 5%;
-      margin-right: 5%;
+      margin-left: 2%;
+      width:30vw;
+
     }
     #eComments{
       padding: 5px;
       background-color: rgba(220,220,220 ,0.75);
       border-radius: 10px;
-      margin-left: 5%;
+      margin-left: 2%;
+      width: 30vw;
+
     }
     #income{
       padding: 5px;
       background-color: rgba(220,220,220 ,0.75);
       border-radius: 10px;
-      margin-left: 5%;
-      margin-right: 5%;
+      margin-left: 2%;
+      width: 30vw;
+
     }
     #past-log{
       padding: 5px;
       background-color: rgba(220,220,220 ,0.75);
       border-radius: 10px;
-      margin-left: 10%;
+      margin-left: 3vw;
+      width: 29vw;
     }
     .modal{
       display: none; /* Hidden by default */
@@ -123,19 +126,23 @@
       border-radius: 10px;
       border-style: none;
       color: whitesmoke;
+      width: 30vw;
     }
     .myBtn:hover{
       background-color: royalblue;
     }
     #myBtn{
-      padding: 2%;
+      margin-left: 2%;
+      padding:2%;
     }
     #name{
       background-color: rgba(220,220,220 ,0.75);
       padding: 1.5%;
       border-radius: 15px;
       border-style: none;
-      border-width: 1px;
+      margin-left: 1%;
+      margin-right: 1%;
+      width: 90%;
     }
     #email{
       background-color: rgba(220,220,220 ,0.75);
@@ -145,6 +152,9 @@
       border-radius: 15px;
       border-style: none;
       border-width: 1px;
+      margin-left: 1%;
+      margin-right: 1%;
+      width: 90%;
     }
     #message{
       background-color: rgba(220,220,220 ,0.75);
@@ -153,6 +163,9 @@
       border-radius: 15px;
       border-style: none;
       border-width: 1px;
+      margin-left: 1%;
+      margin-right: 1%;
+      width: 90%;
     }
     #empemail{
       background-color: rgba(220,220,220 ,0.75);
@@ -161,28 +174,95 @@
       border-radius: 15px;
       border-style: none;
       border-width: 1px;
+      margin-left: 1%;
+      margin-right: 1%;
+      width: 90%;
     }
     ::placeholder{
-      color: rgba(50, 50, 50, 1);
+      color: rgba(50, 50, 50, .5);
     }
+    img{
+      margin-right: 100vw;
+      width: 25vmin;
+      clip-path: circle(30%);
+      display: inline-block;
+    }
+    #linkington{
+      margin-top: -17vh;
+    }
+    .budgetBox{
+      width: 30vw;
+      padding: 3%;
+      margin-left: 3%;
+      margin-top: 10px;
+      border-style: none;
+      background-color: rgba(220,220,220,0.75);
+      border-radius: 15px;
+    }
+    #calcBudget{
+      width: 25vw;
+      background-color: dodgerblue;
+      border-radius: 10px;
+      border-style: none;
+      color: whitesmoke;
+    }
+    #calcBudget:hover{
+      background-color: royalblue;
+    }
+    form{
+      font-size: 2vmin;
+      margin-top: 10px;
+    }
+    input{
+      background-color: rgba(210,210,210,1);
+      border-style: none;
+      border-radius: 10px;
+      padding: 3%;
+      width: 25vw;
+      font-size: 2.5vmin;
+    }
+
+
+
+
+
   </style>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
 </head>
   <body>
-    <p></p>
-    <img class="logo" src="https://s3-alpha-sig.figma.com/img/c09f/c85a/16fc9205d11991c96f3b9db94945fe1a?Expires=1586736000&Signature=AeD7ZBpOVIT004BP9ghGtlkCGYWOyuC8riQJSZ0zSDRvY0txuEW6meZWNwf5Xrt7AWF9tdwF6sucQh7reuSBzWSf0sCjb84FwrrTJrXBXWqkh0r6yEO0gUfp5xaOvh-AwzDiVGXgxkKTujmpVaDvbIFJDgZ8ITjhxaekb59tzssFuh~Gc4Dy-sacxmcJLBmpEpM9mHXPkFhU8wzC-OvXTsac7QbMuf7KrCzYXImyzjdKAsIVKExkSRku8gF~MrI9U~iaDbzilC1ygEzl42y7~OrQ17TOdS2x8Y7fZT4004eL0Gsy9oJxuOt4znoCssZ0GHemHzXQGekBDbeqVmhs3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
-    <a href = "log.html">Logging Page</a>
+    <img src="https://docs.google.com/drawings/d/e/2PACX-1vSJprqPyFD8liGiYpEk8hEo_40_I2wFPx3bfqwcBKxa6wSwD3GBqjUP2CEFe9bDzy-7ii0MEe2BUEQc/pub?w=480&h=360">
+    <div id = "linkington">
+      <a href = "index.html">Logging Page</a>
+    </div>
     <br>
     <br>
-    
     <div class = "mainBod">
       <div class = "item">
         <p id = "totalHours">Total Hours:</p>
         <p id = "income">Total Income:</p>
         <p id = "eComments">Employer Comments:</p>
         <button class= "myBtn" id="myBtn">Request Change</button>
+        <div class="budgetBox">
+          <label>Budgetting</label>
+          <label onclick = "infoAlert()">[?]</label>
+          <p>
+          <input type="text" id="itemName" placeholder="Item">
+          <p>
+          <input type="number" id="itemCost" placeholder="Cost" oninput="check(this)" min="1" >
+          <p>
+          <input type="number" id="itemAmount" placeholder="Amount" oninput="check(this)" min="1"  step="1">
+          <p>
+          <input type="number" id="percentIncome" placeholder="% of income used" oninput="percheck(this)" min="1" max="100">
+          <p>
+          <button id="calcBudget" onClick = "calculateBudget()">Calculate</button>
+
+          <p id="result"></p>
+        </div>
+
+
         <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -196,14 +276,32 @@
     
   </div>
 
-</div>
+  </div>
       </div>
       <div class = "item" id = "past-log">
         <p>Past Logs:</p>
-        <p class = "item" id = "pastLog"></p>
+        <p id = "pastLog"></p>
       </div>
     </div>
       <script>
+         function check(input) {
+   if (input.value <= 0) {
+     input.value = "";
+   } else {
+     // input is fine -- reset the error message
+     input.setCustomValidity('');
+   }
+ }
+ function percheck(input){
+   if (input.value <= 0) {
+     input.value = "";
+   } else if (input.value>100){
+     // input is fine -- reset the error message
+     input.value = '100';
+   }
+
+
+ }
             var uname = sessionStorage.getItem("usernamea");
           if(uname==null){
                 alert("Not an authorized user. Please login with an authorized account ");
@@ -217,7 +315,7 @@
             window.location = "index.html";
           }
           else{
-          const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
+            const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
           var data = "?username="+uname+"&action=profile";
           Http.open("GET", String(url+data));
           Http.send();
@@ -234,12 +332,16 @@
                   }
                   document.getElementById("pastLog").innerHTML = okb;
                   document.getElementById("totalHours").innerHTML = "Total Hours: " + oka[oka.length-3];
+                  sessionStorage.setItem('hours',oka[oka.length-3])
                   document.getElementById("eComments").innerHTML = "Employer Comments: " + oka[oka.length-2];
                   document.getElementById("income").innerHTML = "Total Income: $" + (oka[oka.length-3]*oka[oka.length-1]).toFixed(2);
+                  sessionStorage.setItem('income',(oka[oka.length-3]*oka[oka.length-1]).toFixed(2));
+
 
               }   
+          
           }
-        }   
+          }  
           // Get the modal
     var modal = document.getElementById("myModal");
     // Get the button that opens the modal
@@ -284,6 +386,40 @@
         }
       }
     }
+    function calculateBudget() {
+      var totalIncome = parseFloat(sessionStorage.getItem('income'));
+      var hours = parseFloat(sessionStorage.getItem('hours'));
+      var item = document.getElementById('itemName').value;
+      var wage = totalIncome/hours;
+      var amt = document.getElementById("itemAmount").value;
+      var cost = document.getElementById("itemCost").value; 
+      var totalCost = cost*amt;  
+      var perc = document.getElementById("percentIncome").value;
+      var amtLeft = totalCost - (totalIncome*(perc/100));
+      if(amtLeft<=0){
+        alert("You have enough to get this item.");
+        
+        document.getElementById("result").innerHTML = "You have enough to get " + amt + " " + item;
+      }
+      else{
+      var perHour = wage*(perc/100);
+      var hoursNeeded = (amtLeft/perHour).toFixed(2);
+      hoursNeeded = Math.floor(hoursNeeded);  
+      hoursNeeded = hoursNeeded + 1;  
+      alert("You need " + hoursNeeded + " more hours to get this item.");
+      
+      document.getElementById("result").innerHTML = "You need to work " + hoursNeeded + " more hours to get "+amt + " " + item;
+
+      }
+
+
+
+    }
+    function infoAlert() {
+      alert("Enter the name, cost, amount, and percent of income you want to dedicate towards an item, and find out how many more hours you need to work towards it.");
+    }    
+            
+            
             }
 
 
